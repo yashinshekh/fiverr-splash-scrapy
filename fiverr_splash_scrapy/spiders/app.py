@@ -5,13 +5,12 @@ from scrapy_splash import SplashRequest
 
 class AppSpider(scrapy.Spider):
     name = 'app'
-    allowed_domains = ['example.com']
-    start_urls = ['http://example.com/']
+    allowed_domains = ['google.com']
+    start_urls = ['']
 
-    alllinks = []
 
     def start_requests(self):
-        for line in self.alllinks:
+        for line in self.start_urls:
             yield SplashRequest(line,callback=self.parse,args={'wait':'5'})
 
     def parse(self, response):
